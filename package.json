@@ -1,10 +1,10 @@
 {
-  "name": "systeminformation",
+  "name": "@bigemap/systeminformation",
   "version": "3.54.0",
   "description": "Simple system and OS information library",
   "license": "MIT",
   "author": "Sebastian Hildebrandt <hildebrandt@plus-innovations.com> (https://plus-innovations.com)",
-  "homepage": "https://github.com/sebhildebrandt/systeminformation",
+  "homepage": "https://github.com/bigemap/systeminformation",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
@@ -64,7 +64,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sebhildebrandt/systeminformation.git"
+    "url": "https://github.com/bigemap/systeminformation.git"
   },
   "os": [
     "darwin",

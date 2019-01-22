@@ -42,7 +42,7 @@ Lightweight collection of 35+ functions to retrieve detailed hardware, system an
 ### Installation
 
 ```bash
-$ npm install systeminformation --save
+$ npm install @bigemap/systeminformation --save
 ```
 
 ### Usage
@@ -50,7 +50,7 @@ $ npm install systeminformation --save
 All functions (except `version` and `time`) are implemented as asynchronous functions. Here a small example how to use them:
 
 ```js
-const si = require('systeminformation');
+const si = require('@bigemap/systeminformation');
 
 // callback style
 si.cpu(function(data) {
@@ -219,6 +219,7 @@ I also created a nice little command line tool called [mmon][mmon-github-url]  (
 | | [0].firmwareRevision | X |  | X | X |  | firmware revision |
 | | [0].serialNum | X |  | X | X |  | serial number |
 | | [0].interfaceType | |  | | X |  |  |
+| | **[0].mediaType** | |  | | X |  | media type |
 | | [0].size | X |  | X | X |  | size in bytes |
 | | [0].totalCylinders | |  | | X |  | total cylinders |
 | | [0].totalHeads | |  | | X |  | total heads |
@@ -485,7 +486,7 @@ Remember: all functions (except `version` and `time`) are implemented as asynchr
 **Callback Style**
 
 ```js
-const si = require('systeminformation');
+const si = require('@bigemap/systeminformation');
 
 si.networkStats('eth1', function(data) {
 	console.log('Network Interface Stats (eth1):');
@@ -504,7 +505,7 @@ si.networkStats('eth1', function(data) {
 When omitting callback parameter (cb), then you can use all function in a promise oriented way. All functions (exept of `version` and `time`) are returning a promise, that you can consume:
 
 ```js
-const si = require('systeminformation');
+const si = require('@bigemap/systeminformation');
 
 si.networkStats('eth1')
 	.then(data => {
@@ -526,7 +527,7 @@ si.networkStats('eth1')
 Since node v7.6 you can also use the `async` / `await` pattern. The above example would then look like this:
 
 ```js
-const si = require('systeminformation');
+const si = require('@bigemap/systeminformation');
 
 async function network() {
     try {
@@ -587,7 +588,7 @@ The first time you are calling one of this functions, you will get -1 for transf
 So basically, if you e.g. need a values for network stats every second, your code should look like this:
 
 ```js
-const si = require('systeminformation');
+const si = require('@bigemap/systeminformation');
 
 setInterval(function() {
 	si.networkStats().then(data => {
