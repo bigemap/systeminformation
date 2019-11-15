@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="styles.css">
   <script src="main.js"></script>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
@@ -21,12 +27,13 @@
 </head>
 
 <body>
-  <nav class="nav" style="background-image: url('./assets/trianglify.png');">
+  <nav class="nav">
     <div class="container">
       <a href="."><img class="logo float-left" src="assets/logo.png">
         <div class="title float-left">systeminformation</div>
       </a>
-      <div class="text float-right"><a href="https://github.com/sebhildebrandt/systeminformation">View on Github <i class="fab fa-github"></i></a></div>
+      <div class="text float-right github"><a href="https://github.com/sebhildebrandt/systeminformation">View on Github <i class="fab fa-github"></i></a></div>
+      <div class="text float-right todocs"><a href="./#docs">Docs Overview</a></div>
     </div>
   </nav>
 
@@ -130,9 +137,19 @@
                   </tr>
                   <tr>
                     <td></td>
+                    <td>[0].virtual</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>true if virtual interface</td>
+                  </tr>
+                  <tr>
+                    <td></td>
                     <td>[0].operstate</td>
                     <td>X</td>
-                    <td>X</td>
+                    <td></td>
                     <td>X</td>
                     <td>X</td>
                     <td></td>
@@ -142,7 +159,7 @@
                     <td></td>
                     <td>[0].type</td>
                     <td>X</td>
-                    <td>X</td>
+                    <td></td>
                     <td>X</td>
                     <td>X</td>
                     <td></td>
@@ -152,9 +169,9 @@
                     <td></td>
                     <td>[0].duplex</td>
                     <td>X</td>
+                    <td></td>
                     <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
+                    <td></td>
                     <td></td>
                     <td>duplex (full/half)</td>
                   </tr>
@@ -162,9 +179,9 @@
                     <td></td>
                     <td>[0].mtu</td>
                     <td>X</td>
+                    <td></td>
                     <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
+                    <td></td>
                     <td></td>
                     <td>MUT maximum transmission unit</td>
                   </tr>
@@ -172,7 +189,7 @@
                     <td></td>
                     <td>[0].speed</td>
                     <td>X</td>
-                    <td>X</td>
+                    <td></td>
                     <td>X</td>
                     <td>X</td>
                     <td></td>
@@ -182,9 +199,9 @@
                     <td></td>
                     <td>[0].carrierChanges</td>
                     <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                     <td># changes up/down</td>
                   </tr>
@@ -199,18 +216,28 @@
                     <td>get name of default network interface</td>
                   </tr>
                   <tr>
+                    <td>si.networkGatewayDefault(cb)</td>
+                    <td>: string</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>get default network gateway</td>
+                  </tr>
+                  <tr>
                     <td>si.networkStats(iface,cb)</td>
-                    <td>{...}</td>
+                    <td>[{...}]</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
                     <td></td>
-                    <td>current network stats of given interface<br />iface parameter is optional<br />defaults to first external network interface</td>
+                    <td>current network stats of given interfaces,<br />iface list: comma separated,<br />iface parameter is optional,<br />defaults to first external network interface,<br />pass '*' for all interfaces</td>
                   </tr>
                   <tr>
                     <td></td>
-                    <td>iface</td>
+                    <td>[0].iface</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -220,7 +247,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>operstate</td>
+                    <td>[0].operstate</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -230,7 +257,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>rx_bytes</td>
+                    <td>[0].rx_bytes</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -240,7 +267,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>rx_dropped</td>
+                    <td>[0].rx_dropped</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -250,7 +277,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>rx_errors</td>
+                    <td>[0].rx_errors</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -260,7 +287,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>tx_bytes</td>
+                    <td>[0].tx_bytes</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -270,7 +297,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>tx_dropped</td>
+                    <td>[0].tx_dropped</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -280,7 +307,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>tx_errors</td>
+                    <td>[0].tx_errors</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -290,7 +317,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>rx_sec</td>
+                    <td>[0].rx_sec</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -300,7 +327,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>tx_sec</td>
+                    <td>[0].tx_sec</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -310,7 +337,7 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>ms</td>
+                    <td>[0].ms</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
@@ -387,6 +414,26 @@
                     <td>X</td>
                     <td></td>
                     <td>like ESTABLISHED, TIME_WAIT, ...</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].pid</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>process ID</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].process</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>process name</td>
                   </tr>
                 </tbody>
               </table>
@@ -501,7 +548,7 @@ setInterval(function() {
             <li><a href=".">Home</a></li>
             <li><a href="https://github.com/sebhildebrandt/systeminformation">Github <i class="fab fa-github"></i></a></li>
             <li><a href="contributors.html">Contributors</a></li>
-            <li><a href="sponsoring.html">Buy me a coffee</a></li>
+            <li><a href="https://buymeacoff.ee/systeminfo">Buy me a coffee</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-12">

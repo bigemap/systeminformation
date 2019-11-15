@@ -44,12 +44,12 @@
       <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
         <div class="row">
           <div class="col-12 sectionheader">
-            <div class="title">Processes and Services</div>
+            <div class="title">Virtual Box</div>
             <div class="text">
-              <p>In this section you will learn how to get information about current load, running processes and installed services:</p>
+              <p>In this section you will learn how to get information about virtual box VMs:</p>
               <p>For function reference and examples we assume, that we imported <span class="code">systeminformation</span> as follows:</p>
               <pre><code class="js">const si = require('systeminformation');</code></pre>
-              <h2>Current Load, Processes, Services</h2>
+              <h2>VMs</h2>
               <p>All functions in this section return a promise or can be called with a callback function (parameter <span class="code">cb</span> in the function reference)</p>
               <table class="table table-sm table-bordered table-striped">
                 <thead>
@@ -66,434 +66,24 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>si.currentLoad(cb)</td>
-                    <td>{...}</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>CPU-Load</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>avgload</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>average load</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>currentload</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>CPU load in %</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>currentload_user</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>CPU load user in %</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>currentload_system</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>CPU load system in %</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>currentload_nice</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>CPU load nice in %</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>currentload_idle</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>CPU load idle in %</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>currentload_irq</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>CPU load system in %</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>raw_currentload...</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>CPU load raw values (ticks)</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>cpus[]</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>current loads per CPU in % + raw ticks</td>
-                  </tr>
-                  <tr>
-                    <td>si.fullLoad(cb)</td>
-                    <td>: integer</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>CPU full load since bootup in %</td>
-                  </tr>
-                  <tr>
-                    <td>si.processes(cb)</td>
-                    <td>{...}</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td># running processes</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>all</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td># of all processes</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>running</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td># of all processes running</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>blocked</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td># of all processes blocked</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>sleeping</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td># of all processes sleeping</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>unknown</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>X</td>
-                    <td></td>
-                    <td># of all processes unknown status</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>list[]</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>list of all processes incl. details</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].pid</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process PID</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].parentPid</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>parent process PID</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].name</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process name</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].pcpu</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process % CPU usage</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].pcpuu</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td></td>
-                    <td>process % CPU usage (user)</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].pcpus</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td></td>
-                    <td>process % CPU usage (system)</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].pmem</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process memory %</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].priority</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process priotity</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].mem_vsz</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process virtual memory size</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].mem_rss</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process mem resident set size</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].nice</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>process nice value</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].started</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process start time</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].state</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process state (e.g. sleeping)</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].tty</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>tty from which process was started</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].user</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>user who started process</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].command</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process starting command</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].params</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>process params</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>...[0].path</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>process path</td>
-                  </tr>
-                  <tr>
-                    <td>si.processLoad('apache2',cb)</td>
-                    <td>{...}</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>detailed information about given process</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>proc</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>process name</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>pid</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>PID</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>pids</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>additional pids</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>cpu</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>process % CPU</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>mem</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>process % MEM</td>
-                  </tr>
-                  <tr>
-                    <td>si.services('mysql, apache2', cb)</td>
+                    <td>si.vboxInfo(cb)</td>
                     <td>[{...}]</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
+                    <td>X</td>
+                    <td>returns array of detailed info about all VMs</td>
+                  </tr>
+                  <tr>
                     <td></td>
-                    <td>pass comma separated string of services<br />pass &quot;*&quot; for ALL services (linux/win only)</td>
+                    <td>[0].id</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>virtual box ID</td>
                   </tr>
                   <tr>
                     <td></td>
@@ -502,8 +92,8 @@
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
-                    <td></td>
-                    <td>name of service</td>
+                    <td>X</td>
+                    <td>name</td>
                   </tr>
                   <tr>
                     <td></td>
@@ -512,48 +102,338 @@
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
-                    <td></td>
-                    <td>true / false</td>
+                    <td>X</td>
+                    <td>vbox is running</td>
                   </tr>
                   <tr>
                     <td></td>
-                    <td>[0].startmode</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>[0].started</td>
                     <td>X</td>
-                    <td></td>
-                    <td>manual, automatic, ...</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>started date time</td>
                   </tr>
                   <tr>
                     <td></td>
-                    <td>[0].pids</td>
+                    <td>[0].runningSince</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
-                    <td></td>
-                    <td></td>
-                    <td>pids</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>running since (secs)</td>
                   </tr>
                   <tr>
                     <td></td>
-                    <td>[0].pcpu</td>
+                    <td>[0].stopped</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
-                    <td></td>
-                    <td></td>
-                    <td>process % CPU</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>stopped date time</td>
                   </tr>
                   <tr>
                     <td></td>
-                    <td>[0].pmem</td>
+                    <td>[0].stoppedSince</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>stopped since (secs)</td>
+                  </tr>
+                  <tr>
                     <td></td>
+                    <td>[0].guestOS</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>Guest OS</td>
+                  </tr>
+                  <tr>
                     <td></td>
-                    <td>process % MEM</td>
+                    <td>[0].hardwareUUID</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>Hardware UUID</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].memory</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>Memory in MB</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].vram</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>VRAM in MB</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].cpus</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>CPUs</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].cpuExepCap</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>CPU exec cap</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].cpuProfile</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>CPU profile</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].chipset</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>chipset</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].firmware</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>firmware</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].pageFusion</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>page fusion</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].configFile</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>config file</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].snapshotFolder</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>snapshot folder</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].logFolder</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>log folder path</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].HPET</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>HPET</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].PAE</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>PAE</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].longMode</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>long mode</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].tripleFaultReset</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>triple fault reset</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].APIC</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>APIC</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].X2APIC</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X2APIC</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].ACPI</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>ACPI</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].IOAPIC</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>IOAPIC</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].biosAPICmode</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>BIOS APIC mode</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].bootMenuMode</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>boot menu Mode</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].bootDevice1</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>bootDevice1</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].bootDevice2</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>bootDevice2</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].bootDevice3</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>bootDevice3</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].bootDevice4</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>bootDevice4</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].timeOffset</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>time Offset</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].RTC</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>RTC</td>
                   </tr>
                 </tbody>
               </table>

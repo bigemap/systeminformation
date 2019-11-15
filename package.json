@@ -1,6 +1,6 @@
 {
   "name": "@bigemap/systeminformation",
-  "version": "3.54.1",
+  "version": "4.15.3",
   "description": "Simple system and OS information library",
   "license": "MIT",
   "author": "Sebastian Hildebrandt <hildebrandt@plus-innovations.com> (https://plus-innovations.com)",
@@ -28,6 +28,8 @@
     "osx",
     "windows",
     "freebsd",
+    "openbsd",
+    "netbsd",
     "cpu",
     "cpuload",
     "physical cores",
@@ -60,7 +62,12 @@
     "gpu",
     "display",
     "smart",
-    "disk layout"
+    "disk layout",
+    "wifi",
+    "wifinetworks",
+    "virtual box",
+    "virtualbox",
+    "vm"
   ],
   "repository": {
     "type": "git",
@@ -72,6 +79,7 @@
     "win32",
     "freebsd",
     "openbsd",
+    "netbsd",
     "sunos"
   ],
   "engines": {
