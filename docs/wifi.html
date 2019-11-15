@@ -44,13 +44,13 @@
       <div class="col-12 col-md-8 col-lg-9 col-xl-10 content">
         <div class="row">
           <div class="col-12 sectionheader">
-            <div class="title">General</div>
+            <div class="title">Wifi</div>
             <div class="text">
-              <p>In this section you will learn how to get general systeminformation data. We will also cover the "get-all" functions to get all data at once.</p>
+              <p>In this section you will learn how to get detailed information about available wifi networks:</p>
               <p>For function reference and examples we assume, that we imported <span class="code">systeminformation</span> as follows:</p>
               <pre><code class="js">const si = require('systeminformation');</code></pre>
-              <h2>Lib-Version and Time/Timezone</h2>
-              <p>The first two functions just gibe back system information library version and time/timezone information of your machine:</p>
+              <h2>Wifi Networks</h2>
+              <p>All functions in this section return a promise or can be called with a callback function (parameter <span class="code">cb</span> in the function reference)</p>
               <table class="table table-sm table-bordered table-striped">
                 <thead>
                   <tr>
@@ -66,120 +66,119 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>si.version()</td>
-                    <td>: string</td>
+                    <td>si.wifiNetworks(cb)</td>
+                    <td>[{...}]</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>
-                    <td>lib version (no callback/promise)</td>
-                  </tr>
-                  <tr>
-                    <td>si.time()</td>
-                    <td>{...}</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>object (no callback/promise) with:</td>
+                    <td>array of available wifi networks</td>
                   </tr>
                   <tr>
                     <td></td>
-                    <td>current</td>
+                    <td>[0].ssid</td>
+                    <td>X</td>
+                    <td></td>
                     <td>X</td>
                     <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>local (server) time</td>
+                    <td></td>
+                    <td>Wifi network SSID</td>
                   </tr>
                   <tr>
                     <td></td>
-                    <td>uptime</td>
+                    <td>[0].bssid</td>
+                    <td>X</td>
+                    <td></td>
                     <td>X</td>
                     <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>uptime</td>
+                    <td></td>
+                    <td>BSSID (mac)</td>
                   </tr>
                   <tr>
                     <td></td>
-                    <td>timezone</td>
+                    <td>[0].mode</td>
                     <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>e.g. GMT+0200</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>mode</td>
                   </tr>
                   <tr>
                     <td></td>
-                    <td>timezoneName</td>
+                    <td>[0].channel</td>
+                    <td>X</td>
+                    <td></td>
                     <td>X</td>
                     <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>e.g. CEST</td>
+                    <td></td>
+                    <td>channel</td>
                   </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].frequency</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>frequengy in MHz</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].signalLevel</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>signal level in dB</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].quality</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>quaility in %</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].security</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>array e.g. WPA, WPA-2</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].wpaFlags</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>array of WPA flags</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].rsnFlags</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>array of RDN flags
+                  </tr>
+
                 </tbody>
               </table>
-              <p>Keep in mind, that there is another function <span class="code">si.versions()</span> that will return versions of other system libraries and software packages</p>
-              <h2>Get All At Once</h2>
-              <p>The following three functions <span class="code">si.getStaticData()</span>, <span class="code">si.getDynamicData()</span> and <span class="code">si.getAllData()</span> will return most of the available data in a single result object:</p>
-              <table class="table table-sm table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>Function</th>
-                    <th>Result object</th>
-                    <th>Linux</th>
-                    <th>BSD</th>
-                    <th>Mac</th>
-                    <th>Win</th>
-                    <th>Sun</th>
-                    <th>Comments</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>si.getStaticData(cb)</td>
-                    <td>{...}</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>all static data at once</td>
-                  </tr>
-                  <tr>
-                    <td>si.getDynamicData(srv,iface,cb)</td>
-                    <td>{...}</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>all dynamic data at once<br>Specify services and interfaces to monitor<br>Defaults to first external network interface<br>Pass "*" for ALL services (linux/win only)<br>Pass "*" for ALL network interfaces</td>
-                  </tr>
-                  <tr>
-                    <td>si.getAllData(srv,iface,cb)</td>
-                    <td>{...}</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>all data at once<br>Specify services and interfaces to monitor<br>Defaults to first external network interface<br>Pass "*" for ALL services (linux/win only)<br>Pass "*" for ALL network interfaces</td>
-                  </tr>
-                </tbody>
-              </table>
-              <p><strong>Static data</strong> is all hardware related (or more or less constant) data like system, baseboard, bios, OS, versions, cpu, network interfces, memory and disk layout</p>
-              <p><strong>Dynamic data</strong> will return user, cpu-speed, load, processes, services, temperature, file system, network and disk stats, ... </p>
-              <p>As not all funtions are supported in each operating system the result object might be different in each OS.</p>
-              <p><strong>ATTENTION</strong>: Use this only if you really need ALL information. Especially on Windows this can take really long (up to 20 seconds) because the underlying <span class="code">WMIC</span> command is very slow when using it the first time.</p>
+
             </div>
           </div>
         </div>

@@ -39,6 +39,16 @@ export namespace Systeminformation {
     assetTag: string;
   }
 
+  interface ChassisData {
+    manufacturer: string;
+    model: string;
+    type: string;
+    version: string;
+    serial: string;
+    assetTag: string;
+    sku: string;
+  }
+
   // 3. CPU, Memory, Disks, Battery, Graphics
 
   interface CpuData {
@@ -53,6 +63,7 @@ export namespace Systeminformation {
     speed: string;
     speedmin: string;
     speedmax: string;
+    governor: string;
     cores: number;
     physicalCores: number;
     processors: number;
@@ -79,9 +90,9 @@ export namespace Systeminformation {
   }
 
   interface CpuTemperatureData {
-    main: string;
-    cores: string;
-    max: string;
+    main: number;
+    cores: number[];
+    max: number;
   }
 
   interface MemData {
@@ -91,6 +102,9 @@ export namespace Systeminformation {
     active: number;
     available: number;
     buffcache: number;
+    buffers: number;
+    cached: number;
+    slab: number;
     swaptotal: number;
     swapused: number;
     swapfree: number;
@@ -110,6 +124,7 @@ export namespace Systeminformation {
   }
 
   interface DiskLayoutData {
+    device: string;
     type: string;
     name: string;
     vendor: string;
@@ -156,6 +171,7 @@ export namespace Systeminformation {
   }
 
   interface GraphicsDisplayData {
+    vendor: string;
     model: string;
     main: boolean;
     builtin: boolean;
@@ -165,6 +181,11 @@ export namespace Systeminformation {
     pixeldepth: number;
     resolutionx: number;
     resolutiony: number;
+    currentResX: number;
+    currentResY: number;
+    positionX: number;
+    positionY: number;
+    currentRefreshRate: number;
   }
 
   // 4. Operating System
@@ -181,6 +202,7 @@ export namespace Systeminformation {
     logofile: string;
     serial: string;
     build: string;
+    servicepack: string;
   }
 
   interface UuidData {
@@ -211,7 +233,12 @@ export namespace Systeminformation {
     postgresql: string;
     perl: string;
     python: string;
+    python3: string;
+    pip: string;
+    pip3: string;
+    java: string;
     gcc: string;
+    virtualbox: string;
   }
 
   interface UserData {
@@ -232,6 +259,12 @@ export namespace Systeminformation {
     used: number;
     use: number;
     mount: string;
+  }
+
+  interface FsOpenFilesData {
+    max: number;
+    allocated: number;
+    available: number;
   }
 
   interface BlockDevicesData {
@@ -279,6 +312,7 @@ export namespace Systeminformation {
     ip6: string;
     mac: string;
     internal: boolean;
+    virtual: boolean;
     operstate: string;
     type: string;
     duplex: string;
@@ -308,6 +342,8 @@ export namespace Systeminformation {
     peeraddress: string;
     peerport: string;
     state: string;
+    pid: number;
+    process: string;
   }
 
   interface InetChecksiteData {
@@ -315,6 +351,19 @@ export namespace Systeminformation {
     ok: boolean;
     status: number;
     ms: number;
+  }
+
+  interface WifiNetworkData {
+    ssid: string;
+    bssid: string;
+    mode: string;
+    channel: number;
+    frequency: number;
+    signalLevel: number;
+    quality: number;
+    security: string[];
+    wpaFlags: string[];
+    rsnFlags: string[];
   }
 
   // 7. Current Load, Processes & Services
@@ -377,6 +426,8 @@ export namespace Systeminformation {
     tty: string;
     user: string;
     command: string;
+    params: string;
+    path: string;
   }
 
   interface ProcessesProcessLoadData {
@@ -398,6 +449,55 @@ export namespace Systeminformation {
 
   // 8. Docker
 
+  interface DockerInfoData {
+    id: string;
+    containers: number;
+    containersRunning: number;
+    containersPaused: number;
+    containersStopped: number;
+    images: number;
+    driver: string;
+    memoryLimit: boolean;
+    swapLimit: boolean;
+    kernelMemory: boolean;
+    cpuCfsPeriod: boolean;
+    cpuCfsQuota: boolean;
+    cpuShares: boolean;
+    cpuSet: boolean;
+    ipv4Forwarding: boolean;
+    bridgeNfIptables: boolean;
+    bridgeNfIp6tables: boolean;
+    debug: boolean;
+    mfd: number;
+    oomKillDisable: boolean;
+    ngoroutines: number;
+    systemTime: string;
+    loggingDriver: string;
+    cgroupDriver: string;
+    nEventsListener: number;
+    kernelVersion: string;
+    operatingSystem: string;
+    osType: string;
+    architecture: string;
+    ncpu: number;
+    memTotal: number;
+    dockerRootDir: string;
+    httpProxy: string;
+    httpsProxy: string;
+    noProxy: string;
+    name: string;
+    labels: string[];
+    experimentalBuild: boolean;
+    serverVersion: string;
+    clusterStore: string;
+    clusterAdvertise: string;
+    defaultRuntime: string;
+    liveRestoreEnabled: boolean;
+    isolation: string;
+    initBinary: string;
+    productLicense: string;
+  }
+
   interface DockerContainerData {
     id: string;
     name: string;
@@ -405,7 +505,15 @@ export namespace Systeminformation {
     imageID: string;
     command: string;
     created: number;
+    started: number;
+    finished: number;
+    createdAt: string;
+    startedAt: string;
+    finishedAt: string;
     state: string;
+    restartCount: number;
+    platform: string;
+    driver: string;
     ports: number[];
     mounts: DockerContainerMountData[];
   }
@@ -433,19 +541,62 @@ export namespace Systeminformation {
       r: number;
       w: number;
     };
+    restartCount: number;
     cpu_stats: any;
     precpu_stats: any;
     memory_stats: any,
     networks: any;
   }
 
-  // 9. "Get All at once" - functions
+  // 9. Virtual Box
+
+  interface VboxInfoData {
+    id: string;
+    name: string;
+    running: boolean;
+    started: string;
+    runningSince: number;
+    stopped: string;
+    stoppedSince: number;
+    guestOS: string;
+    hardwareUUID: string;
+    memory: number;
+    vram: number;
+    cpus: number;
+    cpuExepCap: string;
+    cpuProfile: string;
+    chipset: string;
+    firmware: string;
+    pageFusion: boolean;
+    configFile: string;
+    snapshotFolder: string;
+    logFolder: string;
+    HPET: boolean;
+    PAE: boolean;
+    longMode: boolean;
+    tripleFaultReset: boolean;
+    APIC: boolean;
+    X2APIC: boolean;
+    ACPI: boolean;
+    IOAPIC: boolean;
+    biosAPICmode: string;
+    bootMenuMode: string;
+    bootDevice1: string;
+    bootDevice2: string;
+    bootDevice3: string;
+    bootDevice4: string;
+    timeOffset: string;
+    RTC: string;
+  }
+
+  // 10. "Get All at once" - functions
 
   interface StaticData {
     version: string;
     system: SystemData;
     bios: BiosData;
     baseboard: BaseboardData;
+    chassis: ChassisData;
     os: OsData;
     uuid: UuidData;
     versions: VersionData;
@@ -462,6 +613,7 @@ export function version(): string;
 export function system(cb?: (data: Systeminformation.SystemData) => any): Promise<Systeminformation.SystemData>;
 export function bios(cb?: (data: Systeminformation.BiosData) => any): Promise<Systeminformation.BiosData>;
 export function baseboard(cb?: (data: Systeminformation.BaseboardData) => any): Promise<Systeminformation.BaseboardData>;
+export function chassis(cb?: (data: Systeminformation.ChassisData) => any): Promise<Systeminformation.ChassisData>;
 
 export function time(): Systeminformation.TimeData;
 export function osInfo(cb?: (data: Systeminformation.OsData) => any): Promise<Systeminformation.OsData>;
@@ -478,24 +630,28 @@ export function currentLoad(cb?: (data: Systeminformation.CurrentLoadData) => an
 export function fullLoad(cb?: (data: number) => any): Promise<number>;
 
 export function mem(cb?: (data: Systeminformation.MemData) => any): Promise<Systeminformation.MemData>;
-export function memLayout(cb?: (data: Systeminformation.MemLayoutData) => any): Promise<Systeminformation.MemLayoutData>;
+export function memLayout(cb?: (data: Systeminformation.MemLayoutData[]) => any): Promise<Systeminformation.MemLayoutData[]>;
 
 export function battery(cb?: (data: Systeminformation.BatteryData) => any): Promise<Systeminformation.BatteryData>;
 export function graphics(cb?: (data: Systeminformation.GraphicsData) => any): Promise<Systeminformation.GraphicsData>;
 
 export function fsSize(cb?: (data: Systeminformation.FsSizeData[]) => any): Promise<Systeminformation.FsSizeData[]>;
+export function fsOpenFiles(cb?: (data: Systeminformation.FsOpenFilesData[]) => any): Promise<Systeminformation.FsOpenFilesData[]>;
 export function blockDevices(cb?: (data: Systeminformation.BlockDevicesData[]) => any): Promise<Systeminformation.BlockDevicesData[]>;
 export function fsStats(cb?: (data: Systeminformation.FsStatsData) => any): Promise<Systeminformation.FsStatsData>;
 export function disksIO(cb?: (data: Systeminformation.DisksIoData) => any): Promise<Systeminformation.DisksIoData>;
-export function diskLayout(cb?: (data: Systeminformation.DiskLayoutData) => any): Promise<Systeminformation.DiskLayoutData>;
+export function diskLayout(cb?: (data: Systeminformation.DiskLayoutData[]) => any): Promise<Systeminformation.DiskLayoutData[]>;
 
 export function networkInterfaceDefault(cb?: (data: string) => any): Promise<string>;
+export function networkGatewayDefault(cb?: (data: string) => any): Promise<string>;
 export function networkInterfaces(cb?: (data: Systeminformation.NetworkInterfacesData[]) => any): Promise<Systeminformation.NetworkInterfacesData[]>;
 
-export function networkStats(iface?: string, cb?: (data: Systeminformation.NetworkStatsData) => any): Promise<Systeminformation.NetworkStatsData>;
+export function networkStats(ifaces?: string, cb?: (data: Systeminformation.NetworkStatsData[]) => any): Promise<Systeminformation.NetworkStatsData[]>;
 export function networkConnections(cb?: (data: Systeminformation.NetworkConnectionsData[]) => any): Promise<Systeminformation.NetworkConnectionsData[]>;
 export function inetChecksite(url: string, cb?: (data: Systeminformation.InetChecksiteData) => any): Promise<Systeminformation.InetChecksiteData>;
 export function inetLatency(host?: string, cb?: (data: number) => any): Promise<number>;
+
+export function wifiNetworks(cb?: (data: Systeminformation.WifiNetworkData[]) => any): Promise<Systeminformation.WifiNetworkData[]>;
 
 export function users(cb?: (data: Systeminformation.UserData[]) => any): Promise<Systeminformation.UserData[]>;
 
@@ -503,11 +659,13 @@ export function processes(cb?: (data: Systeminformation.ProcessesData) => any): 
 export function processLoad(processName: string, cb?: (data: Systeminformation.ProcessesProcessLoadData) => any): Promise<Systeminformation.ProcessesProcessLoadData>;
 export function services(serviceName: string, cb?: (data: Systeminformation.ServicesData[]) => any): Promise<Systeminformation.ServicesData[]>;
 
-
+export function dockerInfo(cb?: (data: Systeminformation.DockerInfoData) => any): Promise<Systeminformation.DockerInfoData>;
 export function dockerContainers(all?: boolean, cb?: (data: Systeminformation.DockerContainerData[]) => any): Promise<Systeminformation.DockerContainerData[]>;
 export function dockerContainerStats(id?: string, cb?: (data: Systeminformation.DockerContainerStatsData[]) => any): Promise<Systeminformation.DockerContainerStatsData[]>;
 export function dockerContainerProcesses(id?: string, cb?: (data: any) => any): Promise<any>;
 export function dockerAll(cb?: (data: any) => any): Promise<any>;
+
+export function vboxInfo(cb?: (data: Systeminformation.VboxInfoData[]) => any): Promise<Systeminformation.VboxInfoData[]>;
 
 export function getStaticData(cb?: (data: Systeminformation.StaticData) => any): Promise<Systeminformation.StaticData>;
 export function getDynamicData(srv?: string, iface?: string, cb?: (data: any) => any): Promise<any>;

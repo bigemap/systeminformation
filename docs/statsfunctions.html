@@ -12,17 +12,28 @@
   <link rel="stylesheet" href="styles.css">
   <script src="main.js"></script>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
   <title>systeminformation</title>
 
 </head>
 
 <body>
-  <nav class="nav" style="background-image: url('./assets/trianglify.png');">
+  <nav class="nav">
     <div class="container">
       <a href="."><img class="logo float-left" src="assets/logo.png">
         <div class="title float-left">systeminformation</div>
       </a>
-      <div class="text float-right"><a href="https://github.com/sebhildebrandt/systeminformation">View on Github <i class="fab fa-github"></i></a></div>
+      <div class="text float-right github"><a href="https://github.com/sebhildebrandt/systeminformation">View on Github <i class="fab fa-github"></i></a></div>
+      <div class="text float-right todocs"><a href="./#docs">Docs Overview</a></div>
     </div>
   </nav>
 
@@ -46,13 +57,13 @@
 
               <p>So basically, if you e.g. need a values for network stats every second, your code should look like this:</p>
 
-              <pre>const si = require('systeminformation');
+              <pre><code class="js">const si = require('systeminformation');
 
 setInterval(function() {
     si.networkStats().then(data => {
         console.log(data);
     })
-}, 1000)</pre>
+}, 1000)</code></pre>
               <p>Beginning with the second call, you get network transfer values per second.</p>
 
             </div>
@@ -70,7 +81,7 @@ setInterval(function() {
             <li><a href=".">Home</a></li>
             <li><a href="https://github.com/sebhildebrandt/systeminformation">Github <i class="fab fa-github"></i></a></li>
             <li><a href="contributors.html">Contributors</a></li>
-            <li><a href="sponsoring.html">Buy me a coffee</a></li>
+            <li><a href="https://buymeacoff.ee/systeminfo">Buy me a coffee</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-12">

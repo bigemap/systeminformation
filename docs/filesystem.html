@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="styles.css">
   <script src="main.js"></script>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
@@ -21,12 +27,13 @@
 </head>
 
 <body>
-  <nav class="nav" style="background-image: url('./assets/trianglify.png');">
+  <nav class="nav">
     <div class="container">
       <a href="."><img class="logo float-left" src="assets/logo.png">
         <div class="title float-left">systeminformation</div>
       </a>
-      <div class="text float-right"><a href="https://github.com/sebhildebrandt/systeminformation">View on Github <i class="fab fa-github"></i></a></div>
+      <div class="text float-right github"><a href="https://github.com/sebhildebrandt/systeminformation">View on Github <i class="fab fa-github"></i></a></div>
+      <div class="text float-right todocs"><a href="./#docs">Docs Overview</a></div>
     </div>
   </nav>
 
@@ -70,13 +77,23 @@
                   </tr>
                   <tr>
                     <td></td>
+                    <td>[0].device</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td>e.g. /dev/sda</td>
+                  </tr>
+                  <tr>
+                    <td></td>
                     <td>[0].type</td>
                     <td>X</td>
                     <td></td>
                     <td>X</td>
                     <td>X</td>
                     <td></td>
-                    <td>HD, SSD</td>
+                    <td>HD, SSD, NVMe</td>
                   </tr>
                   <tr>
                     <td></td>
@@ -97,36 +114,6 @@
                     <td>X</td>
                     <td></td>
                     <td>vendor/producer</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>[0].firmwareRevision</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>firmware revision</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>[0].serialNum</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td></td>
-                    <td>serial number</td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>[0].interfaceType</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>X</td>
-                    <td></td>
-                    <td></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -170,6 +157,16 @@
                   </tr>
                   <tr>
                     <td></td>
+                    <td>[0].totalSectors</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>total sectors</td>
+                  </tr>
+                  <tr>
+                    <td></td>
                     <td>[0].tracksPerCylinder</td>
                     <td></td>
                     <td></td>
@@ -190,16 +187,6 @@
                   </tr>
                   <tr>
                     <td></td>
-                    <td>[0].totalSectors</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>X</td>
-                    <td></td>
-                    <td>total sectors</td>
-                  </tr>
-                  <tr>
-                    <td></td>
                     <td>[0].bytesPerSector</td>
                     <td></td>
                     <td></td>
@@ -207,6 +194,36 @@
                     <td>X</td>
                     <td></td>
                     <td>bytes per sector</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].firmwareRevision</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>firmware revision</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].serialNum</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>serial number</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>[0].interfaceType</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>SATA, PCIe, ...</td>
                   </tr>
                   <tr>
                     <td></td>
@@ -516,6 +533,46 @@
                     <td>mount point</td>
                   </tr>
                   <tr>
+                    <td>si.fsOpenFiles(cb)</td>
+                    <td>{...}</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td>count max/allocated file descriptors</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>max</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td>count max</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>allocated</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td>count allocated</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>available</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td>count available</td>
+                  </tr>
+                  <tr>
                     <td>si.fsStats(cb)</td>
                     <td>{...}</td>
                     <td>X</td>
@@ -631,7 +688,7 @@ setInterval(function() {
             <li><a href=".">Home</a></li>
             <li><a href="https://github.com/sebhildebrandt/systeminformation">Github <i class="fab fa-github"></i></a></li>
             <li><a href="contributors.html">Contributors</a></li>
-            <li><a href="sponsoring.html">Buy me a coffee</a></li>
+            <li><a href="https://buymeacoff.ee/systeminfo">Buy me a coffee</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-12">

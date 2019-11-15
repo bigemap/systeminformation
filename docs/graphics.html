@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="styles.css">
   <script src="main.js"></script>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
@@ -21,12 +27,13 @@
 </head>
 
 <body>
-  <nav class="nav" style="background-image: url('./assets/trianglify.png');">
+  <nav class="nav">
     <div class="container">
       <a href="."><img class="logo float-left" src="assets/logo.png">
         <div class="title float-left">systeminformation</div>
       </a>
-      <div class="text float-right"><a href="https://github.com/sebhildebrandt/systeminformation">View on Github <i class="fab fa-github"></i></a></div>
+      <div class="text float-right github"><a href="https://github.com/sebhildebrandt/systeminformation">View on Github <i class="fab fa-github"></i></a></div>
+      <div class="text float-right todocs"><a href="./#docs">Docs Overview</a></div>
     </div>
   </nav>
 
@@ -136,7 +143,17 @@
                     <td>X</td>
                     <td>X</td>
                     <td></td>
-                    <td>monitor/display Array</td>
+                    <td>monitor/display array</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>...[0].vendor</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>monitor/display vendor</td>
                   </tr>
                   <tr>
                     <td></td>
@@ -146,7 +163,7 @@
                     <td>X</td>
                     <td>X</td>
                     <td></td>
-                    <td>monitor/display Model</td>
+                    <td>monitor/display model</td>
                   </tr>
                   <tr>
                     <td></td>
@@ -154,7 +171,7 @@
                     <td>X</td>
                     <td></td>
                     <td>X</td>
-                    <td></td>
+                    <td>X</td>
                     <td></td>
                     <td>true if main monitor</td>
                   </tr>
@@ -174,9 +191,9 @@
                     <td>X</td>
                     <td></td>
                     <td>X</td>
+                    <td>X</td>
                     <td></td>
-                    <td></td>
-                    <td>e.g. DisplayPort or HDMI</td>
+                    <td>e.g. DisplayPort, HDMI</td>
                   </tr>
                   <tr>
                     <td></td>
@@ -184,7 +201,7 @@
                     <td>X</td>
                     <td></td>
                     <td>X</td>
-                    <td></td>
+                    <td>X</td>
                     <td></td>
                     <td>size in mm horizontal</td>
                   </tr>
@@ -194,7 +211,7 @@
                     <td>X</td>
                     <td></td>
                     <td>X</td>
-                    <td></td>
+                    <td>X</td>
                     <td></td>
                     <td>size in mm vertical</td>
                   </tr>
@@ -228,6 +245,56 @@
                     <td></td>
                     <td>pixel vertical</td>
                   </tr>
+                  <tr>
+                    <td></td>
+                    <td>...[0].currentResX</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>current pixel horizontal</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>...[0].currentResY</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td></td>
+                    <td>current pixel vertical</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>...[0].positionX</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>screen position X</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>...[0].positionY</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>screen position Y</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>...[0].currentRefreshRate</td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>current refresh rate</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -245,7 +312,7 @@
             <li><a href=".">Home</a></li>
             <li><a href="https://github.com/sebhildebrandt/systeminformation">Github <i class="fab fa-github"></i></a></li>
             <li><a href="contributors.html">Contributors</a></li>
-            <li><a href="sponsoring.html">Buy me a coffee</a></li>
+            <li><a href="https://buymeacoff.ee/systeminfo">Buy me a coffee</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-12">
